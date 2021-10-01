@@ -1,0 +1,18 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app: documentserver
+  name: documentingress
+  namespace: onlyoffice
+spec:
+  ingressClassName: nginx-controller
+  rules:
+  - host: # host
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: documentserver
+          servicePort: 80
